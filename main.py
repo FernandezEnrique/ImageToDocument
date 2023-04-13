@@ -24,20 +24,36 @@ class ImageConversor:
 
         self.get_images(self.argc)
 
-    def get_images(self, argc:int):
-        if self.mode == "f":
+    def get_images(self):
+        '''Stores in self.images all the images provided'''
+
+        # If user is using a directory
+        if self.mode == "d":
+            # Checks if the directory exists
             if os.path.exists(sys.argv[2]):
-                onlyfiles = [f for f in listdir(sys.argv[2]) if isfile(join(sys.argv[2], f))]
+                # Saves files with the extension provided
+                self.images = [f for f in listdir(sys.argv[2]) 
+                               if isfile(f) and
+                               f.endswith(sys.argv[3])]
             else:
                 print("Directory does not exists")
                 exit()
+        else:
+            for f in range(2, len(sys.argv)):
+                # Adds every image that is a file
+                if isfile(f):
+                    self.images.append(f)
 
     def check_args(self):
+        '''Checks users parameters'''
         if self.argc < 3:
             # Not enough arguments were provided
             print("Error. Expecting at least 2 argument.")
             exit()
         elif sys.argv[1] == "-f":
+            if self.argc != 4:
+                print("You must include directory and extension.")
+                exit()
             # User is providing files
             self.mode = "f"
         elif sys.argv[1] == "-d":
