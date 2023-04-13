@@ -21,7 +21,7 @@ pip3 install -r requirements.txt
 
 You have 2 ways to import the images.
 
-- Using all the images of a directory (with a specific extension)
+- Using all the images from a directory (with a specific extension)
 
 ```bash
 python3 main.py -d <folder> <extension>
