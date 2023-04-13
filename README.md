@@ -1,14 +1,39 @@
 # ImageToDocument
-Python script that will convert images to a Word Document
+
+Python script that converts images to a Word Document
+
+## How does it work
+
+It is using opencv and [pytesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+ to extract the text of an image.
 
 ## How to use it
 
+You need Python3.x and 
+[Tesseract](https://github.com/UB-Mannheim/tesseract/wiki) installed.
+
+The `requirements` can be installed running this command.
+
+```bash
+pip3 install -r requirements.txt
+```
+
+You have 2 ways to import the images.
+
+- Using all the images of a directory (with a specific extension)
+
 ```bash
 python3 main.py -d <folder> <extension>
+```
+ 
+- Selecting the images by yourself.
 
-or 
-
+```bash
 python3 main.py -f <files>
 ```
 
-Library used for Word Document: https://python-docx.readthedocs.io/en/latest/
+## What are we using
+
+Image processor: https://pypi.org/project/opencv-python/
+Tesseract: https://github.com/UB-Mannheim/tesseract/wiki
+Word Document: https://pypi.org/project/python-docx/
