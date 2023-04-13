@@ -18,7 +18,7 @@ class ImageConversor:
         # Images
         self.images = []
 
-        # String to convert
+        # Paragraphs converted from images
         self.paragraphs = []
 
         # https://github.com/UB-Mannheim/tesseract/wiki
@@ -38,13 +38,16 @@ class ImageConversor:
 
         print(f"Images: {self.images}")
 
+        # Checks that has at least 1 image
         if len(self.images) < 1:
             print("No images were found")
             exit()
 
+        # Gets the text of each image
         for img in self.images:
             self.image_processor(img)
 
+        # Converts it to the document
         self.text_converter()
 
         
@@ -66,14 +69,14 @@ class ImageConversor:
         
 
     def image_processor(self, filename):
-        '''Gets the text of the image '''
+        '''Gets the text from the image '''
         # Reads image with opencv
         image = cv2.imread(filename)
 
         # Converts image to string
         data = pytesseract.image_to_string(image)
 
-        # 
+        # Appends the string extracted from the image
         self.paragraphs.append(data)
 
     def get_images(self):
