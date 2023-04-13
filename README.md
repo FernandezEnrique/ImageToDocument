@@ -4,7 +4,7 @@ Python script that will convert images to a Word Document
 ## How to use it
 
 ```bash
-python3 main.py -d <folder>
+python3 main.py -d <folder> <extension>
 
 or 
 
